@@ -6,7 +6,7 @@ const Header = () => {
    <header>
        <h1>Weather Search</h1>
         <div className="switch-inner-label">
-            <p>Dark Mode: </p>
+            <p className="theme-label">Dark Mode: </p>
             <Switch size={Sizes.SMALL} active={{ text: 'on' }} inactive={{ text: 'off' }} />
         </div>
     </header>
