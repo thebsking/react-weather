@@ -1,8 +1,12 @@
 import React from 'react';
 import Card from './card'
 
-const CardContainer = () => {
-    <Card />
+const CardContainer = (props) => {
+    return (
+        <p>
+        {console.log(props)}
+        </p>
+    )
 }
 
 export default CardContainer;
