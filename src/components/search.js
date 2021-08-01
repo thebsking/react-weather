@@ -16,7 +16,7 @@ const Search = () => {
 
     const handleCityChange = (evt) => {
         let value = evt.target.value;
-        let noSpace = value.replace(/\s/g, '')
+        let noSpace = value.replace(/\s/g, 'us-')
         setCitySearch(noSpace.toLowerCase())
     }
     const handleZipChange = (evt) => {
@@ -24,20 +24,20 @@ const Search = () => {
     }
 
     const handleSubmit = () => {
-        if (citySearch && zipSearch) {
-            console.log('ERROR: Choose 1 search method')
-        }
         citySearch ?
             fetch(apiCity + citySearch + apiKey)
                 .then(res => res.json())
-                .then(data => setResults(data))
+                .then(data => {
+                    setResults(data);
+                    
+                })
                 .catch(err => console.log(err))
             :
             fetch(apiZip + zipSearch + apiKey)
                 .then(res => res.json())
                 .then(data => {
                     setResults(data);
-                    console.log(results)
+                    
                 })
                 .catch(err => console.log(err));
 
