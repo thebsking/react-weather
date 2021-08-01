@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from 'react-foundation';
-import CardContainer from './cardContainer';
+//import CardContainer from './cardContainer';
 import Card from './card';
-import { render } from '@testing-library/react';
+//import { render } from '@testing-library/react';
 
 const apiKey = '&appid=' + process.env.REACT_APP_API_KEY;
 const apiCity = 'http://api.openweathermap.org/data/2.5/weather?q=';
@@ -29,7 +29,6 @@ const Search = () => {
                 .then(res => res.json())
                 .then(data => {
                     setResults(data);
-                    
                 })
                 .catch(err => console.log(err))
             :
@@ -37,7 +36,6 @@ const Search = () => {
                 .then(res => res.json())
                 .then(data => {
                     setResults(data);
-                    
                 })
                 .catch(err => console.log(err));
 
@@ -62,15 +60,16 @@ const Search = () => {
                 onChange={handleZipChange}
             />
             <Button isExpanded onClick={handleSubmit}>Search</Button>
-            { !results ? 
+            { results.main ? 
                 <div id='weather-results'>
+                    {console.log(results)}
                     <Card
                         name={results.name}
                         description={results.weather[0].description}
                         temp={results.main.temp}
                         feelsLike={results.main.feels_like}
-                        maxTemp={results.main.max_temp}
-                        minTemp={results.main.min_temp}
+                        maxTemp={results.main.temp_max}
+                        minTemp={results.main.temp_max}
                     />
                 </div> :
                 <div></div>
